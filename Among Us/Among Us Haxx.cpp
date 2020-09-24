@@ -191,18 +191,7 @@ int main()
         // color hack idk if it works anymore
         if (GetAsyncKeyState(VK_NUMPAD6))
         {
-            int col0;
-            int col1;
-            int col2;
-            int col3;
-            int col4;
-            int col5;
-            int col6;
-            int col7;
-            int col8;
-            int col9;
-            int col10;
-            int col11;
+            int col0, col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11;
             col0 = 0;
             col1 = 1;
             col2 = 2;
