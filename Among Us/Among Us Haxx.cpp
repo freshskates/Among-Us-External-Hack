@@ -35,12 +35,12 @@ int main()
     system("Color 09");
     SetConsoleTitle("Among Us Hack by Nextro - Public Release");
     HWND hwnd_AC = FindWindow(NULL, "Among Us");
-    if (hwnd_AC = NULL)
+    /*if (hwnd_AC = NULL)
     {
         cout << "Couldn't find process" << endl;
         Sleep(1000);
         exit(0);
-    }
+    }*/ //not needed but ye if yall want to check if the game is found or not remove the comment
     DWORD pID = NULL; // Game process ID
     GetWindowThreadProcessId(hwnd_AC, &pID);
     HANDLE phandle = NULL;
@@ -97,7 +97,7 @@ int main()
     pointsAddress2 += pointsOffsets3.at(pointsOffsets3.size() - 1);
     // teleport
     DWORD offsetGameToBaseAddress4 = 0x012A86E0;
-    vector<DWORD> pointsOffsets4{ 0x80,0xD0,0x2C,0x32C };
+    vector<DWORD> pointsOffsets4{ 0x80,0x56C };
     DWORD baseAddress4 = NULL;
     ReadProcessMemory(phandle, (LPVOID*)(gameBaseAddress + offsetGameToBaseAddress4), &baseAddress4, sizeof(baseAddress4), 0);
     DWORD pointsAddress4 = baseAddress4;
@@ -184,53 +184,19 @@ int main()
         {
             double hTp;
             hTp = 1; // update the cords this is just a random value(caffeteria)
-            int idk;
-            idk = WriteProcessMemory(phandle, (LPVOID*)(pointsAddress4), &hTp, 4, 0);
+            WriteProcessMemory(phandle, (LPVOID*)(pointsAddress4), &hTp, 4, 0);
             cout << "Teleported To Cafeteria" << endl;
         }
         // color hack idk if it works anymore
         if (GetAsyncKeyState(VK_NUMPAD6))
         {
-            int col0, col1, col2, col3, col4, col5, col6, col7, col8, col9, col10, col11;
-            col0 = 0;
-            col1 = 1;
-            col2 = 2;
-            col3 = 3;
-            col4 = 4;
-            col5 = 5;
-            col6 = 6;
-            col7 = 7;
-            col8 = 8;
-            col9 = 9;
-            col10 = 10;
-            col11 = 11;
-            for (;;)
+            int col[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+            for (int i = 0; i < 12; i++)
             {
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col0, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col1, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col2, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col3, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col4, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col5, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col6, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col7, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col8, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col9, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col10, 4, 0);
-                Sleep(1000);
-                WriteProcessMemory(phandle, (LPVOID*)(pointsAddress5), &col11, 4, 0);
+                WriteProcessMemory(phandle, (LPVOID*)pointsAddress5, &col[i], sizeof(int), 0);
                 Sleep(1000);
             }
+            
         }
         // crewmate vision
         if (GetAsyncKeyState(VK_NUMPAD7))
